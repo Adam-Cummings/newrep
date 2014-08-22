@@ -1,9 +1,19 @@
 __author__ = 'team3.aka.the.best.team'
 
 import web
+#import xml.etree.ElementTree as ET
+#import json
+#import mimerender
+#import sqlite3
+#from flask import Flask
 import urllib2
 import unpacker
 from test_data import getPersonTestData, getPersonSkillTestData, getProjectTestData, getProjectSkillTestData
+
+#mimerender = mimerender.FlaskMimeRender()
+
+#tree = ET.parse('user_data.xml')
+#root = tree.getroot()
 
 urls = (
     '/match', 'match',
@@ -130,6 +140,14 @@ class Person:
         self.employeeType = ''
         #this will be a list of PersonSkills
         self.skills = []
+        self.totalSkills = 0
+
+    def sumPersonSkill(self):
+        total = 0
+        for entry in self.skills:
+            total += int(entry.level)
+        self.totalSkills = total
+        return total
 
     def setPersonSkills(self, personSkillsList):
         """creates a list of skills that this person has"""
@@ -137,6 +155,7 @@ class Person:
             # personSkillsList
             if self.id == personSkill.personId:
                 self.skills.append(personSkill)
+            self.sumPersonSkill()
 
     def compare(self, skillList):
         """if the person has the required skills return True, skillList will be a list of projectSkills"""
@@ -205,10 +224,12 @@ class Project:
 
         output += 'Client: ' + self.client + '\n\n'
         output += 'Capable people:\n'
-        if len(self.capablePersons) < 1:     ######project.numberNeeded: # for underavailability
+        if len(self.capablePersons) < 1:
             output += 'Not enough capable people available\n\n'
-        #sort list
+
+        self.capablePersons = sorted(self.capablePersons, key=lambda personInList: personInList.totalSkills)
         self.capablePersons = sorted(self.capablePersons, key=lambda personInList: personInList.position)
+
         for person in self.capablePersons:
             output += person.name + '\n'
         return output
