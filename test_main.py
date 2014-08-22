@@ -1,19 +1,9 @@
 __author__ = 'team3.aka.the.best.team'
 
 import web
-import xml.etree.ElementTree as ET
-import json
-import mimerender
-import sqlite3
-from flask import Flask
 import urllib2
 import unpacker
 from test_data import getPersonTestData, getPersonSkillTestData, getProjectTestData, getProjectSkillTestData
-
-mimerender = mimerender.FlaskMimeRender()
-
-tree = ET.parse('user_data.xml')
-root = tree.getroot()
 
 urls = (
     '/match', 'match',
