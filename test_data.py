@@ -31,9 +31,9 @@ def getPersonSkillTestData():
         '{"EmployeeSkillID":"52", "EmployeeID":"13", "SkillID":"31", "SkillLevel":"2", "CategoryID":"31"}, ' \
         \
         '{"EmployeeSkillID":"52", "EmployeeID":"21", "SkillID":"30", "SkillLevel":"3", "CategoryID":"31"}, ' \
-        '{"EmployeeSkillID":"52", "EmployeeID":"21", "SkillID":"40", "SkillLevel":"2", "CategoryID":"31"}, ' \
+        '{"EmployeeSkillID":"52", "EmployeeID":"21", "SkillID":"40", "SkillLevel":"3", "CategoryID":"31"}, ' \
         '{"EmployeeSkillID":"52", "EmployeeID":"22", "SkillID":"30", "SkillLevel":"3", "CategoryID":"31"}, ' \
-        '{"EmployeeSkillID":"52", "EmployeeID":"22", "SkillID":"40", "SkillLevel":"3", "CategoryID":"31"}]'
+        '{"EmployeeSkillID":"52", "EmployeeID":"22", "SkillID":"40", "SkillLevel":"2", "CategoryID":"31"}]'
 
 
 def getProjectTestData():
